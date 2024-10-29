@@ -31,6 +31,9 @@ class VocabularyProvider extends ChangeNotifier{
   List<VocabularyData> _allVocabularies = [];
   List<VocabularyData> get allVocabularies => _allVocabularies;
 
+  List<VocabularyData> _currentVocabularies = [];
+  List<VocabularyData> get currentVocabularies => _currentVocabularies;
+
   List<VCategoryData> _allCategories = [];
   List<VCategoryData> get allCategories => _allCategories;
 
@@ -60,7 +63,7 @@ class VocabularyProvider extends ChangeNotifier{
     // debugPrint(_selectedCategoryId!);
     log("The selected category id is $_selectedCategoryId");
 
-    _allVocabularies =  _allVocabularies.where((vocabulary)=> vocabulary.categoryId== _selectedCategoryId).toList();
+    _currentVocabularies =  _allVocabularies.where((vocabulary)=> vocabulary.categoryId== _selectedCategoryId).toList();
     print(" the all vocabularies having id $_selectedCategoryId are $_allVocabularies");
     notifyListeners();
   }
@@ -78,6 +81,7 @@ class VocabularyProvider extends ChangeNotifier{
   getAllVocabularies()async {
 
    _allVocabularies = await _voacabularyRepository.allVocabularies();
+   _currentVocabularies = _allVocabularies;
    log("the all vocabularies are $_allVocabularies");
    notifyListeners();
   }

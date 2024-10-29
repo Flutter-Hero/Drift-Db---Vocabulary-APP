@@ -81,12 +81,12 @@ class VocabularyHome extends StatelessWidget {
                 ),
 
                 Expanded(
-                  child: vocabularyProvider.allVocabularies.isEmpty? const Center(child: Text("No vocabularies added yet. Please add some useing + button"),):   ListView.builder(
-                  itemCount: vocabularyProvider.allVocabularies.length,
+                  child: vocabularyProvider.currentVocabularies.isEmpty? const Center(child: Text("No vocabularies added yet. Please add some useing + button"),):   ListView.builder(
+                  itemCount: vocabularyProvider.currentVocabularies.length,
                   
                   itemBuilder: (_, index){
                   
-                    VocabularyData vocabulary = vocabularyProvider.allVocabularies[index];
+                    VocabularyData vocabulary = vocabularyProvider.currentVocabularies[index];
                   
                   
                   return ListTile(
